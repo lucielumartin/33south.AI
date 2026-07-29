@@ -6,7 +6,7 @@
 <title>33 South — Lucie Martin, Strategy &amp; Delivery Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1C2B39;
@@ -72,12 +72,18 @@
     height:76px;
   }
   .logo{
-    font-family:'Fraunces',serif;
-    font-size:1.35rem;
-    font-weight:600;
-    display:flex; align-items:baseline; gap:8px;
+    display:flex; align-items:center; gap:11px;
+    text-decoration:none;
   }
-  .logo .deg{color:var(--gold); font-family:'IBM Plex Mono',monospace; font-size:0.9rem;}
+  .logo-mark{flex:0 0 auto; display:block;}
+  .logo-word{
+    font-family:'Space Grotesk','Inter',sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+    color:var(--ink);
+    line-height:1;
+  }
   .navlinks{display:flex; gap:32px; align-items:center;}
   .navlinks a{
     text-decoration:none; color:var(--ink-soft);
@@ -239,6 +245,8 @@
     .navlinks{position:fixed; top:76px; left:0; right:0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:24px 32px; border-bottom:1px solid var(--line); display:none; gap:20px;}
     .navlinks.open{display:flex;}
     .navtoggle{display:block; background:none; border:1px solid var(--ink); border-radius:var(--radius); padding:8px 12px; font-family:'IBM Plex Mono',monospace; cursor:pointer;}
+    .logo-mark{width:28px; height:28px;}
+    .logo-word{font-size:1rem;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -251,7 +259,20 @@
 
 <header>
   <nav class="wrap">
-    <div class="logo">33<span style="color:var(--teal)">SOUTH</span><span class="deg">°</span></div>
+    <a href="#" class="logo" aria-label="33 South — home">
+      <svg class="logo-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true" focusable="false">
+        <circle cx="24" cy="24" r="13" fill="none" stroke="var(--ink)" stroke-width="1.7"/>
+        <circle cx="24" cy="24" r="7.6" fill="none" stroke="var(--teal)" stroke-width="1.7"/>
+        <circle cx="24" cy="24" r="2.6" fill="var(--gold)"/>
+        <g stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round">
+          <line x1="24" y1="3.5" x2="24" y2="8.5"/>
+          <line x1="24" y1="39.5" x2="24" y2="44.5"/>
+          <line x1="3.5" y1="24" x2="8.5" y2="24"/>
+          <line x1="39.5" y1="24" x2="44.5" y2="24"/>
+        </g>
+      </svg>
+      <span class="logo-word">33 SOUTH</span>
+    </a>
     <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <div class="navlinks" id="navLinks">
       <a href="#approach">Approach</a>
