@@ -229,23 +229,27 @@
   .about-body p:last-child{margin-bottom:0;}
 
   /* testimonials */
+  .testimonial-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:48px;
+  }
+  @media (max-width:860px){.testimonial-grid{grid-template-columns:1fr;}}
   .testimonial-card{
     background:var(--paper-alt); border:1px solid var(--line); border-radius:var(--radius);
-    padding:clamp(28px, 5vw, 48px) clamp(24px, 6vw, 56px); margin-top:48px; max-width:820px;
-    position:relative;
+    padding:clamp(22px, 3.4vw, 36px) clamp(20px, 4vw, 40px);
+    position:relative; display:flex; flex-direction:column;
   }
   .testimonial-card::before{
-    content:"“"; font-family:'Fraunces',serif; font-size:3.4rem; line-height:1; color:var(--gold);
-    display:block; margin-bottom:8px;
+    content:"“"; font-family:'Fraunces',serif; font-size:2.6rem; line-height:1; color:var(--gold);
+    display:block; margin-bottom:6px;
   }
   .testimonial-card blockquote{
-    margin:0; font-family:'Fraunces',serif; font-weight:450; font-size:1.28rem; line-height:1.55; color:var(--ink);
+    margin:0; font-family:'Fraunces',serif; font-weight:450; font-size:1.05rem; line-height:1.5; color:var(--ink);
   }
-  .testimonial-card blockquote p{margin:0 0 18px;}
+  .testimonial-card blockquote p{margin:0 0 14px;}
   .testimonial-card blockquote p:last-child{margin-bottom:0;}
-  .testimonial-attr{margin-top:24px; display:flex; flex-direction:column; gap:2px;}
-  .testimonial-attr .name{font-family:'IBM Plex Mono',monospace; font-size:0.82rem; letter-spacing:0.04em; color:var(--ink);}
-  .testimonial-attr .role{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.04em; color:var(--ink-soft); text-transform:uppercase;}
+  .testimonial-attr{margin-top:20px; display:flex; flex-direction:column; gap:2px;}
+  .testimonial-attr .name{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.04em; color:var(--ink);}
+  .testimonial-attr .role{font-family:'IBM Plex Mono',monospace; font-size:0.71rem; letter-spacing:0.04em; color:var(--ink-soft); text-transform:uppercase;}
 
   /* contact */
   .contact-grid{display:grid; grid-template-columns:1fr 1.2fr; gap:56px; margin-top:48px;}
@@ -466,14 +470,26 @@
       <div class="eyebrow"><span class="label">Testimonials</span></div>
       <h2>What partners say.</h2>
     </div>
-    <div class="testimonial-card">
-      <blockquote>
-        <p>Lucie joined us at a pivotal moment, helping shape and drive a significant strategic expansion. It was a complex undertaking that required her to navigate a small but passionate team, limited resources, and the particular sensitivities of an NGO environment. She brought genuine rigour to this work and consistently brought well-prepared, thoughtful perspectives to Board meetings, asked the right questions, and was never afraid to raise difficult issues directly and constructively.</p>
-        <p>At the conclusion of her consulting engagement, we invited her to stay on as Chair of our Advisory Committee, a reflection of the trust and confidence the whole team has in her judgement and leadership.</p>
-      </blockquote>
-      <div class="testimonial-attr">
-        <span class="name">Denis H</span>
-        <span class="role">Advisory Committee Member - NGO</span>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <blockquote>
+          <p>Lucie supported us in an interim capacity as South Africa Country Lead for our voice AI company, sizing up the local market, prioritising target prospects, and representing us at conferences and with investors. What stands out most is that she operates like a senior hire, not an interim resource or consultant passing through: she quickly understands internal processes and R&amp;Rs, builds real relationships with the team and external stakeholders, delivers what she promises, and brings her own ideas for improvement along the way.</p>
+          <p>Any company scaling into a new market would be lucky to have her.</p>
+        </blockquote>
+        <div class="testimonial-attr">
+          <span class="name">Odin D</span>
+          <span class="role">Founder & CEO - AI SaaS company</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>
+          <p>Lucie joined us at a pivotal moment, helping shape and drive a significant strategic expansion. It was a complex undertaking that required her to navigate a small but passionate team, limited resources, and the particular sensitivities of an NGO environment. She brought genuine rigour to this work and consistently brought well-prepared, thoughtful perspectives to Board meetings, asked the right questions, and was never afraid to raise difficult issues directly and constructively.</p>
+          <p>At the conclusion of her consulting engagement, we invited her to stay on as Chair of our Advisory Committee, a reflection of the trust and confidence the whole team has in her judgement and leadership.</p>
+        </blockquote>
+        <div class="testimonial-attr">
+          <span class="name">Denis H</span>
+          <span class="role">Advisory Committee Member - NGO</span>
+        </div>
       </div>
     </div>
   </div>
