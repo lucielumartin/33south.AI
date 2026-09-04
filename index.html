@@ -563,7 +563,8 @@
           <p>33 South regularly partners with independent consultants, coaches, and specialists across strategy, delivery, and AI. If you're an affiliate or potential partner rather than a prospective client, select that below — we'd genuinely like to hear from you.</p>
         </div>
       </div>
-      <form id="contactForm" onsubmit="return sendMail(event)">
+      <form id="contactForm" onsubmit="return sendForm(event)">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -589,7 +590,7 @@
           <textarea id="message" name="message" required placeholder="A little about what you're working on, or how you'd like to collaborate."></textarea>
         </div>
         <div class="submit-row">
-          <button type="submit" class="btn btn-solid" style="cursor:pointer; font-family:'IBM Plex Mono',monospace;">Send message</button>
+          <button type="submit" id="formSubmitBtn" class="btn btn-solid" style="cursor:pointer; font-family:'IBM Plex Mono',monospace;">Send message</button>
           <span id="formStatus"></span>
         </div>
       </form>
@@ -622,21 +623,55 @@
     this.setAttribute('aria-expanded', open);
   });
 
-  function sendMail(e){
+  function sendForm(e){
     e.preventDefault();
+    var form = document.getElementById('contactForm');
+    var statusEl = document.getElementById('formStatus');
+    var btn = document.getElementById('formSubmitBtn');
+
     var name = document.getElementById('name').value.trim();
     var email = document.getElementById('email').value.trim();
     var org = document.getElementById('org').value.trim();
     var reason = document.querySelector('input[name="reason"]:checked').value;
     var message = document.getElementById('message').value.trim();
+    var honey = form.querySelector('[name="_honey"]').value;
 
-    var subject = "33 South — " + reason + " — " + name;
-    var body = "Name: " + name + "\nEmail: " + email + "\nOrganisation: " + (org || "-") + "\nReason: " + reason + "\n\n" + message;
+    if(honey){ return false; } // spam bot caught by honeypot; silently do nothing
 
-    var mailto = "mailto:lucie.martin@33south.ai?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    window.location.href = mailto;
+    var payload = {
+      name: name,
+      email: email,
+      organisation: org || "-",
+      reason: reason,
+      message: message,
+      _subject: "33 South — " + reason + " — " + name,
+      _template: "table",
+      _captcha: "false"
+    };
 
-    document.getElementById('formStatus').textContent = "Opening your email client…";
+    btn.disabled = true;
+    statusEl.textContent = "Sending…";
+
+    fetch("https://formsubmit.co/ajax/lucie.martin@33south.ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+    .then(function(result){
+      btn.disabled = false;
+      if(result.ok){
+        statusEl.textContent = "Thanks — your message has been sent. We'll be in touch within two business days.";
+        form.reset();
+      } else {
+        statusEl.innerHTML = 'Something went wrong. Please email us directly at <a href="mailto:lucie.martin@33south.ai">lucie.martin@33south.ai</a>.';
+      }
+    })
+    .catch(function(){
+      btn.disabled = false;
+      statusEl.innerHTML = 'Something went wrong. Please email us directly at <a href="mailto:lucie.martin@33south.ai">lucie.martin@33south.ai</a>.';
+    });
+
     return false;
   }
 </script>
