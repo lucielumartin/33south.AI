@@ -47,7 +47,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1C2B39;
@@ -196,7 +196,7 @@
   /* services group headers */
   .svc-group-headers{display:grid; grid-template-columns:repeat(5,1fr); gap:26px; margin-top:48px;}
   .svc-group-label{
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace; font-size:1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
     color:var(--gold); padding-bottom:14px; border-bottom:1px solid rgba(239,233,220,0.18);
   }
   .svc-group-label.span-3{grid-column:span 3;}
@@ -219,7 +219,7 @@
   .svc{
     background:var(--ink); color:var(--paper);
   }
-  .svc .section-head p{color:#C9CDD1; margin-top:8px;}
+  .svc .section-head p{color:#C9CDD1; margin-top:0;}
   .svc .eyebrow .label{color:#C9CDD1;}
   .svc .card{
     background:rgba(239,233,220,0.05); border:1px solid rgba(239,233,220,0.18);
@@ -240,7 +240,7 @@
   .who .tag-group .tag{margin-top:0; padding-top:0;}
 
   /* about */
-  #about .section-head p{max-width:none;}
+  #about .section-head p, #approach .section-head p{max-width:none;}
   .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; margin-top:48px; align-items:stretch;}
   @media (max-width:860px){
     .about-grid{grid-template-columns:1fr;}
@@ -405,7 +405,6 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow"><span class="label">Services</span></div>
-      <h2>Five capabilities, one delivery discipline.</h2>
       <p>Each service draws on the same 20 years of cross-functional delivery — from adidas' Emerging Markets business to AI SaaS go-to-market in Sub-Saharan Africa.</p>
     </div>
     <div class="svc-group-headers">
